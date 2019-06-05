@@ -1,54 +1,45 @@
 import pathlib
-import numpy as np
+import functions as f
+# import numpy as np
 hd = pathlib.Path('data_deleted.img')
-
 
 with hd.open('rb') as file:
 	hdData = file.read()
 
-
-
-idx = hdData.index(b'WAVE')
-print(idx)
-
-# find more than one index (from: https://stackoverflow.com/questions/...
-# 			6294179/how-to-find-all-occurrences-of-an-element-in-a-list)
-def indices(lst, element):
-    result = []
-    offset = -1
-    while True:
-        try:
-            offset = lst.index(element, offset+1)
-        except ValueError:
-            return result
-        result.append(offset)
-
 # using function to get all WAVE header
-idx_list = indices(hdData, b'WAVE')
-print(idx_list)
+idx_list = f.getIdx(hdData, b'WAVE')
+# print(idx_list)
 
+for element in idx_list:
+	with hd.open('rb') as file:
+		file.seek(element-8)
+		filetype = file.read(4)
+		filelen = file.read(4)
+		rifftype = file.read(4)
+		data = file.read(int.from_bytes(filelen, "little"))
 
-#filetype = hdData[(idx-8):(idx-4)]
-#filelen = int.from_bytes(hdData[(idx-4):idx], "little")
-#rifftype = hdData[idx:(idx+4)]
+	new_file = pathlib.Path("wavfile"+str(idx_list.index(element)+1)+".wav")
 
-#print('filetype:', filetype)
-#print('filelen:', filelen)
-#print('rifftype:', rifftype)
+	with new_file.open('wb') as file:
+		file.write(filetype)
+		file.write(filelen)
+		file.write(rifftype)
+		file.write(data)
 
-#wav = hdData[(idx-8):(idx+filelen-8)]
+idx_list = f.getIdx(hdData, b'AVI ')
 
-with hd.open('rb') as file:
-	file.seek(idx-8)
-	filetype = file.read(4)
-	filelen = file.read(4)
-	rifftype = file.read(4)
-	data = file.read(int.from_bytes(filelen, "little"))
+for element in idx_list:
+	with hd.open('rb') as file:
+		file.seek(element-8)
+		filetype = file.read(4)
+		filelen = file.read(4)
+		rifftype = file.read(4)
+		data = file.read(int.from_bytes(filelen, "little"))
 
-new_file = pathlib.Path('NorduSonn.wav')
+	new_file = pathlib.Path("avifile"+str(idx_list.index(element)+1)+".wav")
 
-with new_file.open('wb') as file:
-	file.write(filetype)
-	file.write(filelen)
-	file.write(rifftype)
-	file.write(data)
+	with new_file.open('wb') as file:
+		file.write(filetype)
+		file.write(filelen)
+		file.write(rifftype)
+		file.write(data)
