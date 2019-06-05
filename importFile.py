@@ -28,17 +28,27 @@ idx_list = indices(hdData, b'WAVE')
 print(idx_list)
 
 
-filetype = hdData[(idx-8):(idx-4)]
-filelen = int.from_bytes(hdData[(idx-4):idx], "little")
-rifftype = hdData[idx:(idx+4)]
+#filetype = hdData[(idx-8):(idx-4)]
+#filelen = int.from_bytes(hdData[(idx-4):idx], "little")
+#rifftype = hdData[idx:(idx+4)]
 
-print('filetype:', filetype)
-print('filelen:', filelen)
-print('rifftype:', rifftype)
+#print('filetype:', filetype)
+#print('filelen:', filelen)
+#print('rifftype:', rifftype)
 
-wav = hdData[(idx-8):(idx+filelen-8)]
+#wav = hdData[(idx-8):(idx+filelen-8)]
 
-new_file = pathlib.Path('ersteDatei.wav')
+with hd.open('rb') as file:
+	file.seek(idx-8)
+	filetype = file.read(4)
+	filelen = file.read(4)
+	rifftype = file.read(4)
+	data = file.read(int.from_bytes(filelen, "little"))
+
+new_file = pathlib.Path('NorduSonn.wav')
 
 with new_file.open('wb') as file:
-	file.write(wav)
+	file.write(filetype)
+	file.write(filelen)
+	file.write(rifftype)
+	file.write(data)
