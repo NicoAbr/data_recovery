@@ -27,7 +27,7 @@ for element in idx_list:
 		file.write(data)
 
 idx_list = f.getIdx(hdData, b'AVI ')
-
+print(idx_list)
 for element in idx_list:
 	with hd.open('rb') as file:
 		file.seek(element-8)
@@ -36,7 +36,12 @@ for element in idx_list:
 		rifftype = file.read(4)
 		data = file.read(int.from_bytes(filelen, "little"))
 
-	new_file = pathlib.Path("avifile"+str(idx_list.index(element)+1)+".wav")
+		print(idx_list.index(element))
+		print(filetype)
+		print(filelen)
+		print(rifftype)
+
+	new_file = pathlib.Path("avifile"+str(idx_list.index(element)+1)+".avi")
 
 	with new_file.open('wb') as file:
 		file.write(filetype)
