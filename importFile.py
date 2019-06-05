@@ -1,6 +1,7 @@
 import pathlib
 import functions as f
-# import numpy as np
+import numpy as np
+runNo = 1
 hd = pathlib.Path('data_deleted.img')
 
 with hd.open('rb') as file:
@@ -8,7 +9,6 @@ with hd.open('rb') as file:
 
 # using function to get all WAVE header
 idx_list = f.getIdx(hdData, b'WAVE')
-# print(idx_list)
 
 for element in idx_list:
 	with hd.open('rb') as file:
@@ -18,7 +18,8 @@ for element in idx_list:
 		rifftype = file.read(4)
 		data = file.read(int.from_bytes(filelen, "little"))
 
-	new_file = pathlib.Path("wavfile"+str(idx_list.index(element)+1)+".wav")
+	new_file = pathlib.Path("wavfile"+str(runNo)+".wav")
+	runNo += 1
 
 	with new_file.open('wb') as file:
 		file.write(filetype)
@@ -34,17 +35,20 @@ for element in idx_list:
 		filetype = file.read(4)
 		filelen = file.read(4)
 		rifftype = file.read(4)
-		data = file.read(int.from_bytes(filelen, "little"))
 
-		print(idx_list.index(element))
-		print(filetype)
-		print(filelen)
-		print(rifftype)
+		if filetype == b'RIFF':
+			data = file.read(int.from_bytes(filelen, "little"))
 
-	new_file = pathlib.Path("avifile"+str(idx_list.index(element)+1)+".avi")
+			print(idx_list.index(element))
+			print(filetype)
+			print(filelen)
+			print(rifftype)
 
-	with new_file.open('wb') as file:
-		file.write(filetype)
-		file.write(filelen)
-		file.write(rifftype)
-		file.write(data)
+			new_file = pathlib.Path("avifile"+str(runNo)+".avi")
+			runNo += 1
+
+			with new_file.open('wb') as file:
+				file.write(filetype)
+				file.write(filelen)
+				file.write(rifftype)
+				file.write(data)
