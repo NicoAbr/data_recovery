@@ -9,6 +9,7 @@ with hd.open('rb') as file:
 
 # using function to get all WAVE header
 idx_list = f.getIdx(hdData, b'WAVE')
+print(idx_list)
 
 for element in idx_list:
 	with hd.open('rb') as file:
@@ -68,12 +69,20 @@ for element in idx_list:
 		file.write(rifftype)
 		file.write(data)
 
-# new_idx = []
-# idx_list = f.getIdx(hdData, 0xff)	
+start_idx = []
+idx_list = f.getIdx(hdData, 0xd8)# 255 216 0xff und 0xd8
+for element in idx_list:
+	with hd.open('rb') as file:
+		file.seek(element-1)
+		potential_start = file.read(1)
+		# print(potential_start)
+		if potential_start == 0xff:
+			start_idx.append(element-1)
+
 # for element in idx_list:
 # 	if hdData[element+1] == 0xd8:
 # 		new_idx.append(element+1)
 # print(new_idx)
 # # idx_list = f.getIdx(hdData[my_ints], 0xd8)
-# # print(idx_list)
+print(start_idx)
 # funktion starts with, dann auch follow by oder so?
