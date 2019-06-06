@@ -48,3 +48,13 @@ for element in idx_list:
 		file.write(filelen)
 		file.write(rifftype)
 		file.write(data)
+
+# new_idx = []
+# idx_list = f.getIdx(hdData, 0xff)	
+# for element in idx_list:
+# 	if hdData[element+1] == 0xd8:
+# 		new_idx.append(element+1)
+# print(new_idx)
+# # idx_list = f.getIdx(hdData[my_ints], 0xd8)
+# # print(idx_list)
+# funktion starts with, dann auch follow by oder so?
