@@ -16,17 +16,19 @@ for element in idx_list:
 		filetype = file.read(4)
 		filelen = file.read(4)
 		rifftype = file.read(4)
-		data = file.read(int.from_bytes(filelen, "little"))
 
-	# write data to new file
-	new_file = pathlib.Path("wavfile"+str(runNo)+".wav")
-	runNo += 1
+		if filetype == b'RIFF':
+			data = file.read(int.from_bytes(filelen, "little"))
 
-	with new_file.open('wb') as file:
-		file.write(filetype)
-		file.write(filelen)
-		file.write(rifftype)
-		file.write(data)
+			# write data to new file
+			new_file = pathlib.Path("wavfile"+str(runNo)+".wav")
+			runNo += 1
+
+			with new_file.open('wb') as file:
+				file.write(filetype)
+				file.write(filelen)
+				file.write(rifftype)
+				file.write(data)
 
 # using function to get all AVI header
 idx_list = f.getIdx(hdData, b'AVI ')
@@ -56,3 +58,11 @@ for element in idx_list:
 				file.write(filelen)
 				file.write(rifftype)
 				file.write(data)
+
+#idx_diff = idx_list[1]-idx_list[0]
+#print(idx_diff)
+
+#with hd.open('rb') as file:
+#	file.seek(idx_list[0]-136)
+#	fileData = file.read(3*idx_diff+30)
+#	print(fileData)
