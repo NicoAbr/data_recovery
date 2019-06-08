@@ -62,7 +62,7 @@ for element in idx_list:
 				file.write(rifftype)
 				file.write(data)
 				
-				
+								
 # using function to get all FLAC header
 idx_list = f.getIdx(hdData, b'fLaC')
 print(idx_list)
@@ -103,20 +103,27 @@ print(int.from_bytes(metablocklen, "little"))
 #		file.write(rifftype)
 #		file.write(data)
 
-start_idx = []
-idx_list = f.getIdx(hdData, 0xd8)# 255 216 0xff und 0xd8
-for element in idx_list:
-	with hd.open('rb') as file:
-		file.seek(element-1)
-		potential_start = file.read(1)
-		# print(potential_start)
-		if potential_start == 0xff:
-			start_idx.append(element-1)
+
+# Find JPG
+headerIdx = []
+for idx in range(len(hdData)):
+	if (hdData[idx] == 0xff and hdData[idx+1] == 0xd8):
+		headerIdx.append(idx)
+
+#start_idx = []
+#idx_list = f.getIdx(hdData, 0xd8)# 255 216 0xff und 0xd8
+#for element in idx_list:
+#	with hd.open('rb') as file:
+#		file.seek(element-1)
+#		potential_start = file.read(1)
+#		# print(potential_start)
+#		if potential_start == 0xff:
+#			start_idx.append(element-1)
 
 # for element in idx_list:
 # 	if hdData[element+1] == 0xd8:
 # 		new_idx.append(element+1)
 # print(new_idx)
 # # idx_list = f.getIdx(hdData[my_ints], 0xd8)
-print(start_idx)
+# print(start_idx)
 # funktion starts with, dann auch follow by oder so?
