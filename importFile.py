@@ -34,6 +34,7 @@ for element in idx_list:
 # using function to get all AVI header
 idx_list = f.getIdx(hdData, b'AVI ')
 print(idx_list)
+runNo = 1
 for element in idx_list:
 	with hd.open('rb') as file:
 		file.seek(element-8)
