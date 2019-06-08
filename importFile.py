@@ -35,6 +35,7 @@ for element in idx_list:
 idx_list = f.getIdx(hdData, b'AVI ')
 print(idx_list)
 runNo = 1
+
 for element in idx_list:
 	with hd.open('rb') as file:
 		file.seek(element-8)
@@ -60,15 +61,47 @@ for element in idx_list:
 				file.write(filelen)
 				file.write(rifftype)
 				file.write(data)
+				
+				
+# using function to get all FLAC header
+idx_list = f.getIdx(hdData, b'fLaC')
+print(idx_list)
+runNo = 1
+
+for element in idx_list:
+	with hd.open('rb') as file:
+		file.seek(element)
+		filetype = file.read(4)
+		metablockinfo = file.read(1)
+		metablocklen = file.read(3)
+
+		if filetype == b'fLaC':
+			data = file.read(int.from_bytes(metablocklen, "little"))
+
+			# write data to new file
+			new_file = pathlib.Path("flacfile"+str(runNo)+".flac")
+			runNo += 1
+
+			with new_file.open('wb') as file:
+				file.write(filetype)
+				file.write(metablockinfo)
+				file.write(metablocklen)
+				file.write(data)
+		
+		
+
+		
+print(filetype)
+print(int.from_bytes(metablocklen, "little"))				
 
 #idx_diff = idx_list[1]-idx_list[0]
 #print(idx_diff)
 
-	with new_file.open('wb') as file:
-		file.write(filetype)
-		file.write(filelen)
-		file.write(rifftype)
-		file.write(data)
+#	with new_file.open('wb') as file:
+#		file.write(filetype)
+#		file.write(filelen)
+#		file.write(rifftype)
+#		file.write(data)
 
 start_idx = []
 idx_list = f.getIdx(hdData, 0xd8)# 255 216 0xff und 0xd8
