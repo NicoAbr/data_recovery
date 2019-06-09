@@ -43,8 +43,11 @@ with hd.open('rb') as file:
 #print(headerIdx)
 
 # using function to get all WAVE header
-idx_list = f.getIdx(hdData, b'JFIF')   
-print(idx_list[11])
-
-print(f.getJpgEof(hdData, idx_list[11]))
+idx_list = f.getIdx(hdData, b'JFIF')  
+for element in idx_list:
+	element -= 4;
+	
+	print(element)
+	print(f.getJpgEof(hdData, element))
+	print(" ")
 

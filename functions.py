@@ -32,6 +32,9 @@ def getIdx(lst, element):
 #		getJpgEof(lst, currentIdx)
 	
 	
+	
+# Informationen dazu unter: https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#
+# funktioniert nur leider noch nicht ganz (Die Ausgespuckten Werte ergeben keinen Sinn)
 def getJpgEof(lst, currentIdx):
 	marker = 0
 	while marker != 0xff:
@@ -48,7 +51,7 @@ def getJpgEof(lst, currentIdx):
 		currentIdx += 1
 		x = lst[currentIdx+1]
 		y = lst[currentIdx+2]
-		blockLength =  x*256 + y
+		blockLength =  y*256 + x
 		currentIdx += blockLength
 		currentIdx = getJpgEof(lst, currentIdx)
 		return currentIdx
