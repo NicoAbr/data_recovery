@@ -40,17 +40,18 @@ def getJpgEof(lst, currentIdx):
 		
 	if lst[currentIdx+1] == 0xd9:
 		currentIdx += 1
-		print(currentIdx)
 		return currentIdx
-	elif lst[currentIdx+1] != (0x00 or 0x01 or 0xd0 or 0xd1 or 0xd2 or 0xd3 or 0xd4 or 0xd5 or 0xd6 or 0xd7 or 0xd8):
+	elif lst[currentIdx+1] != (0x00 or 0x01 or 0xd0 or 0xd1 or 
+							   0xd2 or 0xd3 or 0xd4 or 0xd5 or 
+							   0xd6 or 0xd7 or 0xd8):
 		currentIdx += 1
 		x = lst[currentIdx+1]
 		y = lst[currentIdx+2]
 		blockLength =  x*256 + y
-		#blockLength = int.from_bytes(b'lst[currentIdx+1]' b'lst[currentIdx+2]', "little")
 		currentIdx += blockLength
-		getJpgEof(lst, currentIdx)
+		currentIdx = getJpgEof(lst, currentIdx)
+		return currentIdx
 	else:
-		getJpgEof(lst, currentIdx)
-		
+		currentIdx = getJpgEof(lst, currentIdx)
+		return currentIdx
 		
