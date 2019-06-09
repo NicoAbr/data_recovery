@@ -12,19 +12,45 @@ def getIdx(lst, element):
 		
 		
 
-def getJpgEof(lst, startIdx, idxCounter):
-marker = []
-	file.seek(idx_list[1])
-	while marker != 0xff:
-		marker = file.read(1)
-		idxCounter += 1
-	if file.read(1) != (0x00 or 0x01 or 0xd0 or 0xd1 or 0xd2 or 0xd3 or 0xd4 or 0xd5 or 0xd6 or 0xd7 or 0xd8):
-		blockLength = int.from_bytes(file.read(2), "big")
-		idxCounter += 2
+#def getJpgEof(lst, currentIdx):
+#	marker = 0
+#	while marker != 255:
+#		currentIdx += 1
+#		marker = lst[currentIdx]
+#		print(lst[currentIdx])
+#	
+#	
+#	if lst[currentIdx+1] == 0xd9:
+#		currentIdx += 1
+#		return currentIdx
+#	elif lst[currentIdx+1] != (0x00 or 0x01 or 0xd0 or 0xd1 or 0xd2 or 0xd3 or 0xd4 or 0xd5 or 0xd6 or 0xd7 or 0xd8):
+#		currentIdx += 1
+#		blockLength = int.from_bytes(b'lst[currentIdx+1] lst[currentIdx+2]', "big")
+#		currentIdx += blockLength
+#		getJpgEof(lst, currentIdx)
+#	else:
+#		getJpgEof(lst, currentIdx)
+	
+	
+def getJpgEof(lst, currentIdx):
+	marker = 0
+	while marker != 255:
+		currentIdx += 1
+		marker = lst[currentIdx]
+		
+	if lst[currentIdx+1] == 0xd9:
+		currentIdx += 1
+		print(currentIdx)
+		return currentIdx
+	elif lst[currentIdx+1] != (0x00 or 0x01 or 0xd0 or 0xd1 or 0xd2 or 0xd3 or 0xd4 or 0xd5 or 0xd6 or 0xd7 or 0xd8):
+		currentIdx += 1
+		x = lst[currentIdx+1]
+		y = lst[currentIdx+2]
+		blockLength =  x*256 + y
+		#blockLength = int.from_bytes(b'lst[currentIdx+1]' b'lst[currentIdx+2]', "little")
+		currentIdx += blockLength
+		getJpgEof(lst, currentIdx)
 	else:
-		marker = []
-		while marker != 0xff:
-			marker = file.read(1)
-			idxCounter += 1
-	file.read(blockLength-2)
-	idxCounter += blockLength-2
+		getJpgEof(lst, currentIdx)
+		
+		

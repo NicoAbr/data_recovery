@@ -23,6 +23,8 @@ hd = pathlib.Path('data_deleted.img')
 with hd.open('rb') as file:
 	hdData = file.read()
 
+
+	
 #headerIdx = []
 #for idx in range(len(hdData)):
 #	if (hdData[idx] == 0xff and 
@@ -44,11 +46,4 @@ with hd.open('rb') as file:
 idx_list = f.getIdx(hdData, b'JFIF')   
 
 
-marker = []
-idxCounter = 0
-f.getJpgEof(hdData, idx_list[1], idxCounter)
-
-	
-	
-	
-	
+print(f.getJpgEof(hdData, idx_list[10]))

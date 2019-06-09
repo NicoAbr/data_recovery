@@ -74,7 +74,7 @@ for element in idx_list:
 		filetype = file.read(4)
 		metablockinfo = file.read(1)
 		metablocklen = file.read(3)
-
+		print(metablocklen)
 		if filetype == b'fLaC':
 			data = file.read(int.from_bytes(metablocklen, "little"))
 
