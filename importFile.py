@@ -74,8 +74,9 @@ for element in idx_list:
 		filetype = file.read(4)
 		metablockinfo = file.read(1)
 		metablocklen = file.read(3)
+
 		print(metablocklen)
-		if filetype == b'fLaC':
+		if filetype == b'fLaC': # diese Stelle ist eigentlich Schwachsinn?! Danach wird ja auch gesucht
 			data = file.read(int.from_bytes(metablocklen, "little"))
 
 			# write data to new file
@@ -87,10 +88,7 @@ for element in idx_list:
 				file.write(metablockinfo)
 				file.write(metablocklen)
 				file.write(data)
-		
-		
-
-		
+				
 print(filetype)
 print(int.from_bytes(metablocklen, "little"))				
 
