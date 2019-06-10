@@ -3,20 +3,7 @@ import pathlib
 import functions as f
 import numpy as np
 
-#import binascii
-#binary_string0 = binascii.unhexlify("ff")
-#binary_string1 = binascii.unhexlify("d8")
-#binary_string2 = binascii.unhexlify("ff")
-#binary_string3 = binascii.unhexlify("e0")
-#binary_string4 = binascii.unhexlify("00")
-#binary_string5 = binascii.unhexlify("10")
-#binary_string6 = binascii.unhexlify("4a")
-#binary_string7 = binascii.unhexlify("46")
-#binary_string8 = binascii.unhexlify("49")
-#binary_string8 = binascii.unhexlify("46")
-#binary_string8 = binascii.unhexlify("00")
 
-#binary_string = binary_string0+binary_string1+binary_string2+binary_string3+binary_string4+binary_string5+binary_string6+binary_string7+binary_string8
 unNo = 1
 hd = pathlib.Path('data_deleted.img')
 
@@ -24,7 +11,8 @@ with hd.open('rb') as file:
 	hdData = file.read()
 
 
-	
+
+# Damit könnte man den kompletten Header finden, dauert aber ziemlich lange	
 #headerIdx = []
 #for idx in range(len(hdData)):
 #	if (hdData[idx] == 0xff and 
@@ -42,8 +30,13 @@ with hd.open('rb') as file:
 #		
 #print(headerIdx)
 
-# using function to get all WAVE header
-idx_list = f.getIdx(hdData, b'JFIF')  
+
+
+# using function to get all JPG header
+idx_list = f.getIdx(hdData, b'JFIF') 
+
+# alle Indizes werden in die Funktion gegeben und der entsprechnende
+# EOF Indize kommt zurück (EOF steht für "end of file")
 for element in idx_list:
 	element -= 4;
 	
