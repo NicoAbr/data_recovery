@@ -75,6 +75,7 @@ for element in idx_list:
 		metablockinfo = file.read(1)
 		metablocklen = file.read(3)
 
+		print(metablocklen)
 		if filetype == b'fLaC': # diese Stelle ist eigentlich Schwachsinn?! Danach wird ja auch gesucht
 			data = file.read(int.from_bytes(metablocklen, "little"))
 
