@@ -50,14 +50,15 @@ found. The last chunk is always from type 'IEND'.
 
 
 ## Install:
-'data_recovery' is written and tested on python 3.7. To use the function for your own lost data you need the files:
+'data_recovery' is written and tested on python 3.7. and requires pathlib and os library. 
+To use the function for your own lost data you need the files:
 - data_recovery.py
 - functions.py
 
-If you want to just test 'data_recovery' you will need additionaly:
+If you want to just test 'data_recovery' you will need:
 - data_recovery_test.py
 - data_deleted.img 
-
+additionaly.
 
 ## Usage:
 To use 'data_recovery' with your own data type:
