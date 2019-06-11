@@ -33,7 +33,17 @@ A *.JPG file always ends with the two specific bytes "ff" and "d9". After this e
 (ff d8) and the end (ff d9) can be write into a file with the *.JPG ending.
 
 -The information for *.PNG data is mainly taken from https://www.w3.org/TR/PNG-Structure.html
- PNG Data is an compressed image format that consists of a header of 8 bytes which is followed by many chunks with variables sizes. The header always starts with an 68 hex value and the letters PNG as ASCII code. Each chunk starts with 4 bytes that describe the length of that chunk minus 12 bytes. After the number of bytes the chunktype ist written in ASCII code. With these two informations the programm can jump from chunk to chunk until the last chunk of the file is found. The last chunk is always from type 'IEND'. 
+PNG Data is an compressed image format that consists of
+ a header of 8 bytes which is followed by many chunks 
+ with variables sizes. The header always starts with an 
+ 68 hex value and the letters PNG as ASCII code. Each 
+ chunk starts with 4 bytes that describe the length of 
+ that chunk minus 12 bytes. After the number of bytes 
+ the chunktype ist written in ASCII code. With these 
+ two informations the programm can jump from chunk to 
+ chunk until the last chunk of the file is found. The 
+ last chunk is always from type 'IEND'. 
+ 
 
 Install:
 'data_recovery' is written and tested on python 3.7. To use the function for your own lost data you need the files:
