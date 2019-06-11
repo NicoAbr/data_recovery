@@ -38,7 +38,7 @@ idx_list = f.getIdx(hdData, b'JFIF')
 # alle Indizes werden in die Funktion gegeben und der entsprechnende
 # EOF Indize kommt zurück (EOF steht für "end of file")
 for element in idx_list:
-	element -= 4;
+	element -= 4
 	
 	print(element)
 	print(f.getJpgEof(hdData, element))
