@@ -74,10 +74,15 @@ python data_recovery_test # creates directory with recovered data
 
 ## License:
 Copyright 2019 Tilljan Jansohn,
+
 tilljan.jansohn@student.jade-hs.de
+
 Robert Schirm, 
+
 robert.schirm@student.jade-hs.de
+
 Nico Abraham, 
+
 nico.abraham@student.jade-hs.de 
 
 Redistribution and use in source and binary forms, with or without 
