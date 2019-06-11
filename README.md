@@ -1,7 +1,4 @@
 # data_recovery
-zweite Abgabe Angewandtes Programmieren
-Infos zu png von https://www.w3.org/TR/PNG-Structure.html
-
 
 'data_recovery.py' is an function, which can find and recreate different deleted data types from an hard drive image which is 
 given as a path in a parameter. The function searches for specific byte constructs and writes the data related parts in new 
@@ -10,7 +7,7 @@ Datatypes which can be recovered, are: *.AVI, *.JPG, *.WAV, *.PNG, *.FLAC
 
 ## Data types
 
-The informations for *.AVI data are found [here](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format)
+The informations for *.AVI data are found [here](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format).
 *.AVI data is an specific Resource Interchange File Format (RIFF). Thats why every *.AVI file starts with a
 four byte sized "RIFF" information followed by a four byte length information which is the length of the whole data counted
 from current position. After this, four byte of rifftype follows, which is "AVI " in this case. With this information the data 
@@ -20,7 +17,7 @@ The informations for *.WAV data get from the programming lecture "Angewandtes Pr
 *.WAV data is an specific Resource Interchange File Format (RIFF) as well. Thats why the implementation of *.WAV recovery is similar
 to the *.AVI recovery.
 
-The informations for *.JPG data get from [here](https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#)
+The informations for *.JPG data get from [here](https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#).
 All *.JPG files begin with two specific bytes (ff d8) followed by different data blocks. Evereyone of these blocks begins with
 an "ff" byte, followed by a random byte. The two bytes after this are a Big-Endian bytelength information of the current data block.
 A *.JPG file always ends with the two specific bytes "ff" and "d9". After this end piont is found the whole data in between the start
@@ -30,7 +27,7 @@ The informations for *.FLAC data get from [here](https://xiph.org/flac/documenta
 ...
 
 
--The information for *.PNG data is mainly taken from [here](https://www.w3.org/TR/PNG-Structure.html)
+-The information for *.PNG data is mainly taken from [here](https://www.w3.org/TR/PNG-Structure.html).
  PNG Data is an compressed image format that consists 
  of a header of 8 bytes which is followed by many 
  chunks with variables sizes. The header always starts 
