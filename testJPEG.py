@@ -1,24 +1,17 @@
 import pathlib
 import functions as f
-runNo = 1
-pic = pathlib.Path('programmieraufgabe(1).pdf')
 
-with pic.open('rb') as file:
-	picData = file.read()
+data = pathlib.Path('data_deleted.img')
 
-#print(picData)
-length = len(picData)
+with data.open('rb') as file:
+	fileData = file.read()
+#print(fileData)
 
-with pic.open('rb') as file:
-	picBeg = file.read(16)
-	print(picBeg)
+length = len(fileData)
+
+with data.open('rb') as file:
+	fileBeg = file.read(16)
+	print("file beginn: ", fileBeg)
 	file.seek(length-16)
-	picEnd = file.read(16)
-	print(picEnd)
-
-idxBeginn = f.getIdx(picData, b'%PDF')
-idxEnd = f.getIdx(picData, b'\n%%EOF\n')
-
-
-#data = picData[idx_list[0]:(idx_list[0]+2)]
-print(picData)
+	fileEnd = file.read(16)
+	print("file end: ", fileEnd)
