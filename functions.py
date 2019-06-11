@@ -53,4 +53,4 @@ def getJpgEof(dataPath, currentIdx):
 			currentIdx += 1	
 			file.seek(currentIdx)
 	
-		return currentIdx
+		return currentIdx+1
