@@ -1,7 +1,10 @@
+# data_recovery
 
 'data_recovery.py' is an function, which can find different deleted data types from an hard drive image.
 The function searches for specific byte constructs and writes the data related parts in new files. The files are saved in the created directory 'revovered_data'.
 Datatypes which can be recovered, are: *.AVI, *.JPG, *.WAV, *.PNG, *.FLAC
+
+## Data types
 
 The informations for *.AVI data are found in https://en.wikipedia.org/wiki/Resource_Interchange_File_Format
 *.AVI data is an specific Resource Interchange File Format (RIFF). Thats why every *.AVI file starts with a
@@ -36,7 +39,7 @@ chunk until the last chunk of the file is found. The
 last chunk is always from type 'IEND'. 
  
 
-Install:
+## Install:
 'data_recovery' is written and tested on python 3.7. To use the function for your own lost data you need the files:
 - data_recovery.py
 - functions.py
@@ -47,7 +50,7 @@ If you want to just test 'data_recovery' you will need:
 additionaly.
 
 
-License:
+## License:
 Copyright 2019 Tilljan Jansohn, tilljan.jansohn@student.jade-hs.de
                Robert Schirm, robert.schirm@student.jade-hs.de
                Nico Abraham, nico.abraham@student.jade-hs.de 
