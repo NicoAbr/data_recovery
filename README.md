@@ -1,15 +1,6 @@
 # data_recovery
 zweite Abgabe Angewandtes Programmieren
-
-
-Infos zu flac von https://xiph.org/flac/
-
-Infos zu mp3 von http://mpgedit.org/mpgedit/mpeg_format/mpeghdr.htm
-		https://www.codeproject.com/Articles/8295/MPEG-Audio-Frame-Header
-
 Infos zu png von https://www.w3.org/TR/PNG-Structure.html
-
-Infos zu jpg von https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#
 
 
 'data_recovery.py' is an function, which can find different deleted data types from an hard drive image.
@@ -31,6 +22,10 @@ All *.JPG files begin with two specific bytes (ff d8) followed by different data
 an "ff" byte, followed by a random byte. The two bytes after this are a Big-Endian bytelength information of the current data block.
 A *.JPG file always ends with the two specific bytes "ff" and "d9". After this end piont is found the whole data in between the start
 (ff d8) and the end (ff d9) can be write into a file with the *.JPG ending.
+
+The informations for *.FLAC data get from https://xiph.org/flac/documentation_format_overview.html
+...
+
 
 -The information for *.PNG data is mainly taken from https://www.w3.org/TR/PNG-Structure.html
 PNG Data is an compressed image format that consists of
@@ -79,5 +74,5 @@ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
 PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  		
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		
