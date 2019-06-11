@@ -8,10 +8,8 @@ hd = pathlib.Path('data_deleted.img')
 with hd.open('rb') as file:
 	hdData = file.read()
 
-
 # using function to get all JPG header
 idx_list = f.getIdx(hdData, b'JFIF') 
-print(len(idx_list))
 
 for element in idx_list:
 	with hd.open('rb') as file:
@@ -20,7 +18,6 @@ for element in idx_list:
 		
 		if startMarker == b'\xff\xd8\xff\xe0':
 			eofIdx = f.getJpgEof(hd, element-4)
-			print(eofIdx)
 			file.seek(element-6)
 			data = file.read(eofIdx-(element-6))
 			
