@@ -4,7 +4,7 @@ import functions as f
 import numpy as np
 
 
-unNo = 1
+runNo = 1
 hd = pathlib.Path('data_deleted.img')
 
 with hd.open('rb') as file:
@@ -34,13 +34,36 @@ with hd.open('rb') as file:
 
 # using function to get all JPG header
 idx_list = f.getIdx(hdData, b'JFIF') 
+print(len(idx_list))
+
+for element in idx_list:
+	with hd.open('rb') as file:
+		file.seek(element-6)
+		startMarker = file.read(4)
+		
+		if startMarker == b'\xff\xd8\xff\xe0':
+			eofIdx = f.getJpgEof(hd, element-4)
+			print(eofIdx)
+			file.seek(element-6)
+			data = file.read(eofIdx-(element-6))
+			
+			new_file = pathlib.Path("jpgfile"+str(runNo)+".jpg")
+			runNo += 1
+
+			with new_file.open('wb') as file:
+				file.write(data)
+			
+
+			
+
+
 
 # alle Indizes werden in die Funktion gegeben und der entsprechnende
 # EOF Indize kommt zurück (EOF steht für "end of file")
-for element in idx_list:
-	element -= 4;
-	
-	print(element)
-	print(f.getJpgEof(hdData, element))
-	print(" ")
+#for element in idx_list:
+#	element -= 6;
+#	
+#	print(element)
+#	print(f.getJpgEof(hdData, element))
+#	print(" ")
 
