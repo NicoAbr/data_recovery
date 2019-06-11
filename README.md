@@ -16,8 +16,8 @@ from current position. After this, four byte of rifftype follows, which is "AVI 
 can rewrited from the beginning byte till "filelen + 8" (for RIFF header). 
 
 WAV
-The informations for *.WAV data get from the programming lecture "Angewandtes Programmieren" of Jade Hochschule Oldenburg.
 WAV is an uncompressed audio file format for bitstreams.
+The informations for *.WAV data get from the programming lecture "Angewandtes Programmieren" of Jade Hochschule Oldenburg.
 *.WAV data is an specific Resource Interchange File Format (RIFF) as well. Thats why the implementation of *.WAV recovery is similar
 to the *.AVI recovery.
 
