@@ -1,6 +1,6 @@
 # data_recovery
 
-'data_recovery.py' is an function, which can find and recreate different deleted data types from an hard drive image which is 
+'data_recovery.py' is a function, which can find and recreate different deleted data types from an hard drive image which is 
 given as a path in a parameter. The function searches for specific byte constructs and writes the data related parts in new 
 files. The files are saved in the created directory 'revovered_data'.
 Datatypes which can be recovered, are: *.AVI, *.WAV,*.JPG, *.FLAC, *.PNG
@@ -60,12 +60,16 @@ If you want to just test 'data_recovery' you will need:
 additionaly.
 
 ## Usage:
-To use data_recovery with your own data type:
+To use 'data_recovery' with your own data type:
 
 ```python
-
 python data_recovery('your_lost_data.img') # creates directory with recovered data
+```
 
+To use it on the test data 'data_deleted.img' just type:
+
+```python
+python data_recovery_test # creates directory with recovered data
 ```
 
 ## License:
