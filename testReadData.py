@@ -1,7 +1,7 @@
 import pathlib
 import functions as f
 nbytes = 64	# Wie viele Bytes sollen angezeigt werden?
-data = pathlib.Path('data_deleted.img')
+data = pathlib.Path('wavfile1.wav')
 
 with data.open('rb') as file:
 	fileData = file.read()
