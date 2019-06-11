@@ -19,7 +19,7 @@ for element in idx_list:
 		rifftype = file.read(4)
 
 		if filetype == b'RIFF':
-			data = file.read(int.from_bytes(filelen, "little"))
+			data = file.read(int.from_bytes(filelen, "little")-4)
 
 			# write data to new file
 			new_file = pathlib.Path("wavfile"+str(runNo)+".wav")
@@ -45,7 +45,7 @@ for element in idx_list:
 
 		# find only RIFF AVI data
 		if filetype == b'RIFF':
-			data = file.read(int.from_bytes(filelen, "little"))
+			data = file.read(int.from_bytes(filelen, "little")-4)
 
 			print(idx_list.index(element))
 			print(filetype)
