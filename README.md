@@ -54,10 +54,10 @@ found. The last chunk is always from type 'IEND'.
 - data_recovery.py
 - functions.py
 
-If you want to just test 'data_recovery' you will need:
+If you want to just test 'data_recovery' you will need additionaly:
 - data_recovery_test.py
 - data_deleted.img 
-additionaly.
+
 
 ## Usage:
 To use 'data_recovery' with your own data type:
