@@ -29,5 +29,3 @@ for element in idx_list:
 
 			with new_file.open('wb') as file:
 				file.write(data)
-			
-
