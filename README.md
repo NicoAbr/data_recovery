@@ -1,7 +1,3 @@
-# data_recovery
-zweite Abgabe Angewandtes Programmieren
-Infos zu png von https://www.w3.org/TR/PNG-Structure.html
-
 
 'data_recovery.py' is an function, which can find different deleted data types from an hard drive image.
 The function searches for specific byte constructs and writes the data related parts in new files. The files are saved in the created directory 'revovered_data'.
