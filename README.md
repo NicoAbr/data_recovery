@@ -7,7 +7,7 @@ Datatypes which can be recovered, are: *.AVI, *.WAV, *.JPG, *.FLAC, *.PNG
 
 ## Data types
 
-#### AVI
+### AVI
 AVI is an multimedia container format which can contain video and audio.
 The informations for *.AVI data are found [here](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format).
 *.AVI data is an specific Resource Interchange File Format (RIFF). Thats why every *.AVI file starts with a
