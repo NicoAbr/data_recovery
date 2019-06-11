@@ -3,8 +3,8 @@ zweite Abgabe Angewandtes Programmieren
 Infos zu png von https://www.w3.org/TR/PNG-Structure.html
 
 
-data_recovery.py is an function, which can find different deleted data types from an hard drive image.
-The function searches for specific byte constructs and writes the data related parts in new files.
+'data_recovery.py' is an function, which can find different deleted data types from an hard drive image.
+The function searches for specific byte constructs and writes the data related parts in new files. The files are saved in the created directory 'revovered_data'.
 Datatypes which can be recovered, are: *.AVI, *.JPG, *.WAV, *.PNG, *.FLAC
 
 The informations for *.AVI data are found in https://en.wikipedia.org/wiki/Resource_Interchange_File_Format
@@ -30,6 +30,15 @@ The informations for *.FLAC data get from https://xiph.org/flac/documentation_fo
 -The information for *.PNG data is mainly taken from https://www.w3.org/TR/PNG-Structure.html
  PNG Data is an compressed image format that consists of a header of 8 bytes which is followed by many chunks with variables sizes. The header always starts with an 68 hex value and the letters PNG as ASCII code. Each chunk starts with 4 bytes that describe the length of that chunk minus 12 bytes. After the number of bytes the chunktype ist written in ASCII code. With these two informations the programm can jump from chunk to chunk until the last chunk of the file is found. The last chunk is always from type 'IEND'. 
 
+Install:
+'data_recovery' is written and tested on python 3.7. To use the function for your own lost data you need the files:
+- data_recovery.py
+- functions.py
+
+If you want to just test 'data_recovery' you will need:
+- data_recovery_test.py
+- data_deleted.img 
+additionaly.
 
 
 License:
