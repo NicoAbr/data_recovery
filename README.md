@@ -27,7 +27,7 @@ The informations for *.FLAC data get from [here](https://xiph.org/flac/documenta
 ...
 
 
--The information for *.PNG data is mainly taken from [here](https://www.w3.org/TR/PNG-Structure.html).
+The information for *.PNG data is mainly taken from [here](https://www.w3.org/TR/PNG-Structure.html).
  PNG Data is an compressed image format that consists 
  of a header of 8 bytes which is followed by many 
  chunks with variables sizes. The header always starts 
@@ -50,11 +50,22 @@ If you want to just test 'data_recovery' you will need:
 - data_deleted.img 
 additionaly.
 
+## Usage:
+To use data_recovery with your own data type:
+
+```python
+
+python data_recovery('your_lost_data.img') # creates directory with recovered data
+
+```
 
 ## License:
-Copyright 2019 Tilljan Jansohn, tilljan.jansohn@student.jade-hs.de
-               Robert Schirm, robert.schirm@student.jade-hs.de
-               Nico Abraham, nico.abraham@student.jade-hs.de 
+Copyright 2019 Tilljan Jansohn, 
+tilljan.jansohn@student.jade-hs.de
+               Robert Schirm, 
+			   robert.schirm@student.jade-hs.de
+               Nico Abraham, 
+			   nico.abraham@student.jade-hs.de 
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
