@@ -1,15 +1,31 @@
+""" Copyright (c) 2019, Tilljan Jansohn, tilljan.jansohn@student.jade-hs.de
+						Robert Schirm, robert.schirm@student.jade-hs.de
+						Nico Abraham, nico.abraham@student.jade-hs.de
+	This code is published under the terms of the BSD license. """
+	
 import pathlib as p
 import functions as f
 import os
 
-
 def data_recovery(deleted_data):
+    """data_recovery(deleted_data)
+ 
+	Function to recover deleted or lost data from hard drive.
+	
+	Input:
+	deleted_data = String including path of deleted data file 
+	
+	Output:
+	Creates directory including recovered data
+    """
 	hd = p.Path(deleted_data)
 
+	# create new directory for recovered data
 	path = p.Path('recovered_data')
 	if os.path.isdir(path) == False:
 		os.mkdir('recovered_data')
 
+	# reading in deleted data
 	with hd.open('rb') as file:
 		hdData = file.read()
 

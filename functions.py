@@ -1,6 +1,10 @@
-# find more than one index (from: https://stackoverflow.com/questions/...
-# 			6294179/how-to-find-all-occurrences-of-an-element-in-a-list)
+""" Copyright (c) 2019, Tilljan Jansohn, tilljan.jansohn@student.jade-hs.de
+						Robert Schirm, robert.schirm@student.jade-hs.de
+						Nico Abraham, nico.abraham@student.jade-hs.de
+	This code is published under the terms of the BSD license. """
+	
 def getIdx(lst, element):
+
     result = []
     offset = -1
     while True:
@@ -10,11 +14,9 @@ def getIdx(lst, element):
             return result
         result.append(offset)
 		
-	
-	
-# Informationen dazu unter: https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#
-# Funktion zum suchen der EOF Indizes. 
+
 def getJpgEof(dataPath, currentIdx):
+
 	with dataPath.open('rb') as file:
 		file.seek(currentIdx)
 		marker1 = file.read(1)
