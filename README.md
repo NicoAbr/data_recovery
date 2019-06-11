@@ -73,7 +73,7 @@ python data_recovery_test # creates directory with recovered data
 ```
 
 ## License:
-Copyright 2019 Tilljan Jansohn, 
+Copyright 2019 Tilljan Jansohn, \n
 tilljan.jansohn@student.jade-hs.de
                Robert Schirm, 
 			   robert.schirm@student.jade-hs.de
