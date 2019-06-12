@@ -1,0 +1,11 @@
+﻿Auswertung Zeitplan
+
+Der Zeitplan der zweiten Programmieraufgabe konnte leider aufgrund zahlreicher paralleler Abgaben 
+nicht sonderlich gut eingehalten werden. Zudem war es schwieriger als zunachst gedacht die jpg 
+Dateien wieder herzustellen. Der Zeitaufwand dafür wurde unterschätzt. wav und avi hingegen waren 
+Dateiformate welche mit Hilfe des Wissens aus der Vorlesung vom 22.5. recht gut gefunden werden 
+konnten. Eine pdf wurde zudem auch hergestellt, allerdings war die Zeit zu knapp um eine geeignete 
+Automation zu finden.
+Insgesamt hätten mit einer besseren Zeiteinteilung noch mindestens 2 weitere Dateiformate gefunden 
+werden können. Es ist diesmal allerdings besser gelungen Zeit für Kommentierungen, Readme und Lizenz
+etc. aufzubringen.
