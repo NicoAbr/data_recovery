@@ -9,7 +9,7 @@ Datatypes which can be recovered, are: *.AVI, *.WAV, *.JPG, *.FLAC, *.PNG
 
 ### AVI
 AVI is an multimedia container format which can contain video and audio.
-The informations for *.AVI data are found [here](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format).
+The information for *.AVI data are found [here](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format).
 *.AVI data is an specific Resource Interchange File Format (RIFF). Thats why every *.AVI file starts with a
 four byte sized "RIFF" information followed by a four byte length information which is the length of the whole data counted
 from current position. After this, four byte of rifftype follows, which is "AVI " in this case. With this information the data 
@@ -17,13 +17,13 @@ can rewrited from the beginning byte till "filelen + 8" (for RIFF header).
 
 ### WAV
 WAV is an uncompressed audio file format for bitstreams.
-The informations for *.WAV data get from the programming lecture "Angewandtes Programmieren" of Jade Hochschule Oldenburg.
+The information for *.WAV data get from the programming lecture "Angewandtes Programmieren" of Jade Hochschule Oldenburg.
 *.WAV data is an specific Resource Interchange File Format (RIFF) as well. Thats why the implementation of *.WAV recovery is similar
 to the *.AVI recovery.
 
 ### JPG
 JPG is an compressed picture format, special used for photos with less memory usage.
-The informations for *.JPG data get from [here](https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#).
+The information for *.JPG data get from [here](https://stackoverflow.com/questions/4585527/detect-eof-for-jpg-images?answertab=votes#).
 All *.JPG files begin with two specific bytes (ff d8) followed by different data blocks. Evereyone of these blocks begins with
 an "ff" byte, followed by a random byte. The two bytes after this are a Big-Endian bytelength information of the current data block.
 A *.JPG file always ends with the two specific bytes "ff" and "d9". After this end piont is found the whole data in between the start
@@ -31,7 +31,7 @@ A *.JPG file always ends with the two specific bytes "ff" and "d9". After this e
 
 ### FLAC
 FLAC is an uncompressed audio file format.
-The informations for *.FLAC data get from [here](https://xiph.org/flac/documentation_format_overview.html)
+The information for *.FLAC data get from [here](https://xiph.org/flac/documentation_format_overview.html)
 Every *.FLAC file has an four byte string "flaC" at the beginning. After this appears a metablock info and a metablock length which can
 used for file lenght. 
 
@@ -50,14 +50,15 @@ found. The last chunk is always from type 'IEND'.
 
 
 ## Install:
-'data_recovery' is written and tested on python 3.7. To use the function for your own lost data you need the files:
+'data_recovery' is written and tested on python 3.7. and requires pathlib and os library. 
+To use the function for your own lost data you need the files:
 - data_recovery.py
 - functions.py
 
-If you want to just test 'data_recovery' you will need additionaly:
+If you want to just test 'data_recovery' you will need:
 - data_recovery_test.py
 - data_deleted.img 
-
+additionaly.
 
 ## Usage:
 To use 'data_recovery' with your own data type:
