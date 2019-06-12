@@ -32,10 +32,11 @@ def data_recovery(deleted_data):
 	# recover WAVE files
 	# finding header of wave files
 	waveIdx = f.getIdx(hdData, b'WAVE')
-
+	runNr = 1
+	
 	# going to the start of each wave header 
 	# and reading in header information
-	for counter, element in enumerate(waveIdx):
+	for element in waveIdx:
 		with hd.open('rb') as file:
 			file.seek(element-8)
 			fileType = file.read(4)
@@ -47,7 +48,8 @@ def data_recovery(deleted_data):
 				data = file.read(int.from_bytes(fileLen, "little")-4)
 
 				# creating and writing new file
-				new_file = p.Path("recovered_data\wavfile"+str(counter+1)+".wav")
+				new_file = p.Path("recovered_data\wavfile"+str(runNr)+".wav")
+				runNr += 1
 				with new_file.open('wb') as file:
 					file.write(fileType)
 					file.write(fileLen)
@@ -58,7 +60,8 @@ def data_recovery(deleted_data):
 	# recover AVI files			
 	# finding header of avi files
 	aviIdx = f.getIdx(hdData, b'AVI ')
-
+	runNr = 1
+	
 	# going to the start of each avi header 
 	# and reading in header information
 	for counter, element in enumerate(aviIdx):
@@ -73,7 +76,8 @@ def data_recovery(deleted_data):
 				data = file.read(int.from_bytes(fileLen, "little")-4)
 
 				# creating and writing new file
-				new_file = p.Path("recovered_data\\avifile"+str(counter+1)+".avi")
+				new_file = p.Path("recovered_data\\avifile"+str(runNr)+".avi")
+				runNr += 1
 				with new_file.open('wb') as file:
 					file.write(fileType)
 					file.write(fileLen)
@@ -84,7 +88,8 @@ def data_recovery(deleted_data):
 	# recover FLAC files
 	# finding header of flac files
 	flacIdx = f.getIdx(hdData, b'fLaC')
-
+	runNr = 1
+	
 	# going to the start of each flac header 
 	# and reading in header information
 	for counter, element in enumerate(flacIdx):
@@ -97,7 +102,8 @@ def data_recovery(deleted_data):
 			data = file.read(int.from_bytes(blockLen, "little"))
 
 			# creating and writing new file
-			new_file = p.Path("recovered_data\\flacfile"+str(counter+1)+".flac")
+			new_file = p.Path("recovered_data\\flacfile"+str(runNr)+".flac")
+			runNr += 1
 			with new_file.open('wb') as file:
 				file.write(fileType)
 				file.write(blockInfo)
@@ -108,7 +114,8 @@ def data_recovery(deleted_data):
 	# recover JPG files
 	# finding header of jpg files
 	jpgIdx = f.getIdx(hdData, b'JFIF') 
-
+	runNr = 1
+	
 	# going to the start of each jpg header
 	for counter, element in enumerate(jpgIdx):
 		with hd.open('rb') as file:
@@ -124,7 +131,8 @@ def data_recovery(deleted_data):
 				data = file.read(eofIdx-(element-6))
 				
 				# creating and writing new file
-				new_file = p.Path("recovered_data\jpgfile"+str(counter+1)+".jpg")
+				new_file = p.Path("recovered_data\jpgfile"+str(runNr)+".jpg")
+				runNr += 1
 				with new_file.open('wb') as file:
 					file.write(data)
 					
