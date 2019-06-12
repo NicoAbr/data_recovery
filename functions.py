@@ -4,15 +4,24 @@
 	This code is published under the terms of the BSD license. """
 	
 def getIdx(lst, element):
+	""" function to find more than one index with an wanted value in binary 
+		data. Main code is taken from https://stackoverflow.com/questions/...
+ 			6294179/how-to-find-all-occurrences-of-an-element-in-a-list
+		Input: 
+			lst: List of binary data
+			element: value to look for in binary data
 
-    result = []
-    offset = -1
-    while True:
-        try:
-            offset = lst.index(element, offset+1)
-        except ValueError:
-            return result
-        result.append(offset)
+		Output:
+			List of indices of first bytes with wanted value
+	"""
+	result = []
+	offset = -1
+	while True:
+		try:
+			offset = lst.index(element, offset+1)
+		except ValueError:
+			return result
+		result.append(offset)
 		
 
 def getJpgEof(dataPath, currentIdx):
