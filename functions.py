@@ -18,9 +18,12 @@ def getIdx(lst, element):
 	offset = -1
 	while True:
 		try:
+			# getting index of element with wanted value
 			offset = lst.index(element, offset+1)
+		# ending function at end of data
 		except ValueError:
 			return result
+		# append each index to list
 		result.append(offset)
 		
 
