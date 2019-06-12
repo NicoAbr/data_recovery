@@ -4,7 +4,9 @@
 	This code is published under the terms of the BSD license. """
 	
 def getIdx(lst, element):
-	""" function to find more than one index with an wanted value in binary 
+	""" getIdx(lst, element)
+	
+		Function to find more than one index with an wanted value in binary 
 		data. Main code is taken from https://stackoverflow.com/questions/...
  			6294179/how-to-find-all-occurrences-of-an-element-in-a-list
 		Input: 
@@ -25,7 +27,18 @@ def getIdx(lst, element):
 		
 
 def getJpgEof(dataPath, currentIdx):
-	# going to the start of the header 
+	""" getJpgEof(dataPath, currentIdx)
+	
+		Function to find the end of file indice for the datatype jpg.
+		Input: 
+			dataPath: Path of deleted_data
+			currentIdx: Index of first header marker
+
+		Output:
+			currentIdx: Indice of the end of file
+	"""
+	
+	# skip to the start of the header 
 	# and read in markers
 	with dataPath.open('rb') as file:
 		file.seek(currentIdx)
